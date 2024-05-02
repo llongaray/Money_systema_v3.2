@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container-main">
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF (Chave Pix)</th>
+                <th>VR Diário (R$)</th>
+                <th>VR Mensal (R$)</th>
+                <th>VT Diário (R$)</th>
+                <th>VT Mensal (R$)</th>
+                <th>Dias Úteis no Mês</th>
+                <th>Total Benefícios (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{ funcionario.nome_completo }}</td>
+                <td>{{ funcionario.cpf }}</td>
+                <td>{{ funcionario.vr_diario|floatformat:2 }}</td>
+                <td>{{ funcionario.vr_mensal|floatformat:2 }}</td>
+                <td>{{ funcionario.vt_diario|floatformat:2 }}</td>
+                <td>{{ funcionario.vt_mensal|floatformat:2 }}</td>
+                <td>{{ funcionario.dias_uteis_mes }}</td>
+                <td>{{ funcionario.total_beneficios|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>      
+</section>
+{% endblock %}

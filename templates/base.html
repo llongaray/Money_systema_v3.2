@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money System v3</title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}?v=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    {% block addstyle_extra %}{% endblock  %}
+</head>
+<body>
+    {% include "partials/_menu.html" %}
+    <main>
+        {% include "partials/_header.html" %}
+        {% block content %}{% endblock %}
+    </main>
+    <script src="{% static "js/script.js" %}"></script>
+    <script>
+        // Função para atualizar o footer
+        function updateFooter() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById("copyright");
+            const githubLink = document.getElementById("github-link");
+            
+            copyrightElement.textContent = ` © ${currentYear} llongaray`;
+            githubLink.href = "https://github.com/llongaray/";
+        }
+        
+        // Chamada da função para atualizar o footer ao carregar a página
+        updateFooter();
+    </script>
+</body>
+</html>

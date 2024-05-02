@@ -1,0 +1,80 @@
+{% load static %}
+
+<aside id="menu">
+    <section class="logo">
+        <!-- Aqui vai o logotipo da empresa -->
+        <img src="{% static 'img\logo-7YTtrpDue-transformed.png' %}" alt="Logo">
+        <div id="menu-toggle">
+            <i class="fas fa-bars"></i> <!-- Ícone de sanduíche -->
+        </div>
+    </section>
+    <section class="options">
+        <h2>
+            <div>
+                <i class="fas fa-home"></i> <!-- Ícone de casa -->
+                <span class="title">Início</span>
+            </div>
+            <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
+        </h2>
+        <ul>
+            <li><a class="menu-link" href="{% url 'relatorio_geral' %}">Relatório Geral</a></li>
+            <li>Relatório de Ramais</li>
+        </ul>
+        <h2>
+            <div>
+                <i class="fas fa-desktop"></i> <!-- Ícone de computador -->
+                <span class="title">TI</span>
+            </div>
+            <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
+        </h2>
+        <ul>
+            <!-- Adicionando os links para os diferentes recursos do TI -->
+            <li><a class="menu-link" href="{% url 'form_addti' %}">Formulário de TI</a></li>
+            <li><a class="menu-link" href="{% url 'relatorio_chips' %}">Relatório de CHIPs</a></li>
+            <li><a class="menu-link" href="{% url 'planilha_emails' %}">Planilha de E-mails</a></li>
+            <li><a class="menu-link" href="{% url 'planilha_pass_ip' %}">Planilha Pass-IP</a></li>
+        </ul>        
+        <h2>
+            <div>
+                <i class="fas fa-users"></i> <!-- Ícone de pessoas -->
+                <span class="title">Recursos Humanos</span>
+            </div>
+            <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
+        </h2>
+        <ul>
+            <li><a class="menu-link" href="{% url 'form_funcionarios' %}">Formulário para Funcionários</a></li>
+            <li><a class="menu-link" href="{% url 'list_funcionarios' %}">Lista de Funcionários</a></li>
+            <li><a class="menu-link" href="{% url 'list_salarios' %}">Lista por Salários</a></li>
+            <li><a class="menu-link" href="{% url 'list_beneficios' %}">Lista por Benefícios</a></li>
+        </ul>
+        <h2>
+            <div>
+                <i class="fas fa-users"></i> <!-- Ícone de pessoas -->
+                <span class="title">Financeiro</span>
+            </div>
+            <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
+        </h2>
+        <ul>
+            <li><a class="menu-link" href="{% url 'form_gastos' %}">Formulário Gastos</a></li>
+            <li><a class="menu-link" href="">Relatório Geral</a></li>
+            <li><a class="menu-link" href="">Relatório por Setor</a></li>
+        </ul>
+        <h2>
+            <div>
+                <i class="fas fa-cogs"></i> <!-- Ícone de engrenagens -->
+                <span class="title">Outros</span>
+            </div>
+            <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
+        </h2>
+        <ul>
+            <li>Lista por Setor</li>
+            <li>Lista por Ramal</li>
+            <li>Acesso Painel Admin</li>
+        </ul>
+    </section>
+    
+    <footer style="display: flex; flex-direction: column;">
+        <p><a id="github-link" href="https://github.com/llongaray/" style="color: rgb(146, 70, 233);">GitHub</a></p>
+        <p id="copyright"></p>
+    </footer>
+</aside>

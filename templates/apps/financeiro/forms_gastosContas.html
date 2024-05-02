@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+{% block addstyle_extra %}
+<link rel="stylesheet" href="{% static "css/style_form.css" %}">
+{% endblock  %}
+{% block content %}
+<section class="container-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Formulário de Conta</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <h4>Informações Gerais</h4>
+                        <span class="box-form width100">
+                            <label for="id_nome">Nome da Conta:</label>
+                            <input type="text" name="nome" id="id_nome" required>
+                        </span>
+                        <span class="box-form width100">
+                            <label for="id_vencimento_dia">Dia de Vencimento:</label>
+                            <input type="number" name="vencimento_dia" id="id_vencimento_dia" required>
+                        </span>
+                        <span class="box-form width100">
+                            <label for="id_tipo_conta">Tipo de Conta:</label>
+                            <select name="tipo_conta" id="id_tipo_conta" required>
+                                <option value="GERAL">Geral</option>
+                                <option value="SISTEMA">Sistema</option>
+                                <option value="VOIP">Voip</option>
+                            </select>
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h4>Setores</h4>
+                        <div class="setor-form">
+                            <span class="box-form">
+                                <label for="id_Atendimento_POA">Atendimento POA:</label>
+                                <input type="checkbox" name="Atendimento_POA" id="id_Atendimento_POA">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_Atendimento_SM">Atendimento SM:</label>
+                                <input type="checkbox" name="Atendimento_SM" id="id_Atendimento_SM">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_Atendimento_SLE">Atendimento SLE:</label>
+                                <input type="checkbox" name="Atendimento_SLE" id="id_Atendimento_SLE">
+                            </span>
+                        </div>
+                        <div class="setor-form">
+                            <span class="box-form">
+                                <label for="id_SIAPE">SIAPE:</label>
+                                <input type="checkbox" name="SIAPE" id="id_SIAPE">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_INSS">INSS:</label>
+                                <input type="checkbox" name="INSS" id="id_INSS">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_TI">TI:</label>
+                                <input type="checkbox" name="TI" id="id_TI">
+                            </span>
+                        </div>
+                        <div class="setor-form">
+                            <span class="box-form">
+                                <label for="id_Marketing">Marketing:</label>
+                                <input type="checkbox" name="Marketing" id="id_Marketing">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_Operacional">Operacional:</label>
+                                <input type="checkbox" name="Operacional" id="id_Operacional">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_Outros">Outros:</label>
+                                <input type="checkbox" name="Outros" id="id_Outros">
+                            </span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="form-group">
+                        <h4>Empresas</h4>
+                        <div class="setor-form">
+                            <span class="box-form">
+                                <label for="id_BOREAL">Boreal:</label>
+                                <input type="checkbox" name="BOREAL" id="id_BOREAL">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_MONEY">Money:</label>
+                                <input type="checkbox" name="MONEY" id="id_MONEY">
+                            </span>
+                            <span class="box-form">
+                                <label for="id_PARK_GUAIBA">Park Guaiba:</label>
+                                <input type="checkbox" name="PARK_GUAIBA" id="id_PARK_GUAIBA">
+                            </span>
+                        </div>
+
+                    </div>         
+                    <span class="box-button">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </span>  
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Formulário de Gasto</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <h4>Informações Gerais</h4>
+                        <span class="box-form width100">
+                            <label for="id_nome_associado">Nome Associado:</label>
+                            <select name="nome_associado" id="id_nome_associado" required>
+                                {% for conta in contas %}
+                                    <option value="{{ conta.nome }}">{{ conta.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </span>
+                        <span class="box-form width100">
+                            <label for="id_valor_pago">Valor Pago:</label>
+                            <input type="text" name="valor_pago" id="id_valor_pago" required pattern="[0-9]+(\.[0-9]{2})?" title="Use o formato 000.00">
+                        </span>
+                        <span class="box-form">
+                            <label for="id_status">Status:</label>
+                            <input type="checkbox" name="status" id="id_status" value="Pago"> Pago
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <h4>Comprovante</h4>
+                        <span class="box-form">
+                            <label for="id_comprovante">Comprovante:</label>
+                            <input type="file" name="comprovante" id="id_comprovante" accept=".pdf" required>
+                        </span>
+                    </div>
+                    
+                    <span class="box-button">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </span> 
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

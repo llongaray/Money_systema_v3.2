@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money System - Login Acess</title>
+    <link rel="stylesheet" href="static/css/painel-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <section class="top-view-login">
+        <img src="static\img\logo-7YTtrpDue-transformed.png" alt="logo money">
+    </section>
+    <section class="bottom-view-form">
+        <form action="" method="post">
+            <span class="user-login camp">
+                <i class="fas fa-user"></i> <!-- Ícone para o campo de usuário -->
+                <input type="text" id="usuario" name="usuario" tabindex="1" required autofocus placeholder="Usuário">
+            </span>
+            
+            <span class="user-pass camp">
+                <i class="fas fa-lock"></i> <!-- Ícone para o campo de senha -->
+                <input type="password" id="senha" name="senha" tabindex="2" required placeholder="Senha">
+            </span>
+            
+            <span class="button">
+                <input type="submit" value="Entrar" tabindex="3">
+                <i class="fas fa-sign-in-alt"></i> <!-- Ícone do Font Awesome para o login -->
+            </span>
+            
+        </form>
+        
+    </section>
+
+    <script>
+        // Seleciona todos os elementos com a classe .button ou .camp
+        const buttons = document.querySelectorAll('.button, .camp');
+        
+        // Adiciona um evento de clique a cada botão
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Simula um clique no botão de envio do formulário
+                document.getElementById('login-form').submit();
+            });
+        });
+    </script>
+</body>
+</html>

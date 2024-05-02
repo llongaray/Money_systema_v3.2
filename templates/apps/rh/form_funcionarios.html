@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% block addstyle_extra %}
+<link rel="stylesheet" href="{% static "css/style_form.css" %}">
+{% endblock  %}
+{% block content %}
+<section class="container-main">
+    <form action="{% url 'form_funcionarios' %}" method="POST">
+        {% csrf_token %}
+        <label for="nome_completo">Nome Completo:</label>
+        <input type="text" id="nome_completo" name="nome_completo" required><br><br>
+
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input type="date" id="data_nascimento" name="data_nascimento" required><br><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato esperado: xxx.xxx.xxx-xx"><br><br>
+
+        <label for="cnpj">CNPJ (Opcional):</label>
+        <input type="text" id="cnpj" name="cnpj" pattern="\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}" title="Formato esperado: xx.xxx.xxx/xxxx-xx"><br><br>
+
+        <label for="tipo_contrato">Tipo de Contrato:</label>
+        <select id="tipo_contrato" name="tipo_contrato" required>
+            <option value="Estágio">Estágio</option>
+            <option value="CLT">CLT</option>
+            <option value="PJ">PJ</option>
+        </select><br><br>
+
+        <label for="tempo_contrato">Tempo de Contrato:</label>
+        <select id="tempo_contrato" name="tempo_contrato" required>
+            <option value="6 Meses">6 Meses</option>
+            <option value="1 Ano">1 Ano</option>
+            <option value="2 Anos">2 Anos</option>
+            <option value="Indeterminado">Indeterminado</option>
+        </select><br><br>
+
+        <label for="salario">Salário:</label>
+        <input type="text" id="salario" name="salario" required><br><br>
+
+        <!-- Novos campos adicionados -->
+        <label for="turno">Turno:</label>
+        <select id="turno" name="turno" required>
+            <option value="Manhã">Manhã</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Integral">Integral</option>
+        </select><br><br>
+
+        <label for="horario_diario">Horário Diário:</label>
+        <select id="horario_diario" name="horario_diario" required>
+            <option value="6 Horas">6 Horas</option>
+            <option value="9 Horas">9 Horas</option>
+        </select><br><br>
+        <!-- Fim dos novos campos -->
+
+        <label for="vr_ativo">Vale-Alimentação (VR):</label>
+        <input type="checkbox" id="vr_ativo" name="vr_ativo">
+        <label for="vr_valor_diario">Valor Diário:</label>
+        <input type="text" id="vr_valor_diario" name="vr_valor_diario"><br><br>
+
+        <label for="vt_ativo">Vale-Transporte (VT):</label>
+        <input type="checkbox" id="vt_ativo" name="vt_ativo">
+        <label for="vt_valor_diario">Valor Diário:</label>
+        <input type="text" id="vt_valor_diario" name="vt_valor_diario"><br><br>
+
+        <label for="setor">Setor:</label>
+        <select id="setor" name="setor" required>
+            <option value="Lojas">Lojas</option>
+            <option value="SIAPE">SIAPE</option>
+            <option value="INSS">INSS</option>
+            <option value="TI">TI</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Operacional">Operacional</option>
+            <option value="Outros">Outros</option>
+        </select><br><br>
+
+        <label for="status_atividade">Status de Atividade:</label>
+        <select id="status_atividade" name="status_atividade" required>
+            <option value="ativo">Ativo</option>
+            <option value="inativo">Inativo</option>
+        </select><br><br>
+
+        <input type="submit" value="Cadastrar Funcionário">
+    </form>
+</section>
+
+{% endblock %}

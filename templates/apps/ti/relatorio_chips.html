@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block addstyle_extra %}
+<link rel="stylesheet" href="{% static "css/style_subform.css" %}">
+{% endblock  %}
+
+{% block content %}
+<section class="container-main">
+    <form method="GET" class="dataFilter">
+        <label for="data_inicio">Data Início:</label>
+        <input type="date" id="data_inicio" name="data_inicio">
+        <label for="data_fim">Data Fim:</label>
+        <input type="date" id="data_fim" name="data_fim">
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome Completo</th>
+                <th>CPF</th>
+                <th>Setor</th>
+                <th>Operadora/Site</th>
+                <th>Número</th>
+                <th>Status</th>
+                <th>Modificação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dados in dados_relatorio %}
+            <tr>
+                <td>{{ dados.nome_completo }}</td>
+                <td>{{ dados.cpf }}</td>
+                <td>{{ dados.setor }}</td>
+                <td>{{ dados.operadora_site }}</td>
+                <td>{{ dados.ddd }} - {{ dados.numero }}</td>
+                <td>{{ dados.status }}</td>
+                <td>
+                    {% if dados.status == 'ativo' %}
+                        <a href="{% url 'banir_numero' dados.numero dados.date_hour %}"><i class="fas fa-ban"></i></a>
+                    {% endif %}
+                    {% if dados.status == 'ativo' %}
+                        <a href="{% url 'reciclar_numero' dados.numero dados.date_hour %}"><i class="fas fa-recycle"></i></a>
+                    {% endif %}    
+                    {% if dados.status == 'reciclar' %}
+                        <a href="{% url 'reciclado_numero' dados.numero dados.date_hour %}"><i class="fas fa-recycle"></i></a>
+                    {% endif %}
+                    <a href="{% url 'excluir_numb' dados.numero dados.date_hour %}"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

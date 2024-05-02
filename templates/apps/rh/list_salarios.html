@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container-main">
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Salário Bruto</th>
+                <th>Impostos (%)</th>
+                <th>Descontos</th>
+                <th>Valor Líquido</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{ funcionario.nome_completo }}</td>
+                <td>{{ funcionario.cpf }}</td>
+                <td>R$ {{ funcionario.salario_bruto|floatformat:2 }}</td>
+                <td>{{ funcionario.imposto_percentual }}%</td>
+                <td>R$ {{ funcionario.descontos|floatformat:2 }}</td>
+                <td>R$ {{ funcionario.valor_liquido|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</section>
+{% endblock %}

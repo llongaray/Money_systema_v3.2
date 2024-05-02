@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container-main">
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Tipo de Contrato</th>
+                <th>CNPJ</th>
+                <th>CHIP Assoc.</th>
+                <th>E-mails Assoc.</th>
+                <th>Status VR</th>
+                <th>Status VT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{ funcionario.nome_completo }}</td>
+                <td>{{ funcionario.cpf }}</td>
+                <td>{{ funcionario.tipo_contrato }}</td>
+                <td>{{ funcionario.cnpj }}</td>
+                <td>{{ funcionario.chip_assoc }}</td>
+                <td>{{ funcionario.emails_assoc }}</td>
+                <td>{{ funcionario.status_vr }}</td>
+                <td>{{ funcionario.status_vt }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+</section>
+{% endblock %}

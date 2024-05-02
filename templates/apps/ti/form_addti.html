@@ -1,0 +1,48 @@
+<!-- form_addti.html -->
+
+{% extends "base.html" %}
+{% load static %}
+{% block addstyle_extra %}
+<link rel="stylesheet" href="{% static "css/style_form.css" %}">
+{% endblock  %}
+{% block content %}
+<section class="container-main">
+    <!-- Formulário 1: Selecionar Funcionário -->
+    <form action="{% url 'form_addti' %}" method="POST">
+        {% csrf_token %}
+        <label for="id_funcionario">Selecione o Funcionário:</label>
+        <select id="id_funcionario" name="funcionario">
+            {% for funcionario in funcionarios %}
+                <option value="{{ funcionario.cpf }}">{{ funcionario.nome_completo }} - {{ funcionario.cpf }} - {{ funcionario.setor }}</option>
+            {% endfor %}
+        </select> <!-- Adicionei a tag de fechamento para o seletor de funcionário -->
+
+        <!-- Restante do formulário de informações de contato -->
+        <label for="id_operadora_site">Operadora/Site:</label>
+        <input type="text" id="id_operadora_site" name="operadora_site">
+        
+        <label for="id_ddd">DDD:</label>
+        <input type="text" id="id_ddd" name="ddd">
+        
+        <label for="id_numero">Número (com 9 e sem outros caracteres e espaço):</label>
+        <input type="text" id="id_numero" name="numero">
+
+        <label for="id_email">Email (comercial/da empresa):</label>
+        <input type="text" id="id_email" name="email">
+        
+        <label for="id_senha_email">Senha:</label>
+        <input type="text" id="id_senha_email" name="senha_email">
+        
+        <button type="submit">Salvar</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+
+{% endblock %}

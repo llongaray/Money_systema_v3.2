@@ -1,0 +1,104 @@
+/* Importando fonte do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=SF+Droob7&display=swap');
+
+/* Definindo fonte padrão */
+body {
+    font-family: 'SF Droob7', sans-serif;
+}
+
+/* Paleta de cores */
+:root {
+    --color-1: #1e3545;
+    --color-2: #33697b;
+    --color-3: #ffffff;
+    --color-4: #868b94;
+    --color-5: #e0e0dd;
+    --color-6: #f0f0f5;
+}
+
+/* Estilo do formulário */
+form {
+    margin: 0 auto;
+    max-width: 400px; /* Defina a largura máxima do formulário conforme necessário */
+    padding: 20px;
+    background-color: var(--color-5);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo dos rótulos */
+label {
+    font-weight: bold;
+    color: var(--color-1);
+    font-size: 10pt;
+}
+
+/* Estilo dos campos de entrada */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-4);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--color-3);
+}
+
+/* Estilo dos checkboxes */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Estilo do botão de envio */
+form .box-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 45px;
+    margin-top: 8px;
+}
+
+button[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-2);
+    color: var(--color-3);
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #254e64; /* Cor do botão ao passar o mouse */
+}
+
+/* Estilo dos grupos de formulário */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px; /* Adiciona margem acima dos grupos de formulário */
+}
+
+.form-group .setor-form {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Estilo dos elementos box-form */
+.form-group .setor-form .box-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6px; /* Adiciona margem acima dos elementos box-form */
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.form-group .setor-form .width100 {
+    width: 100%;
+}
